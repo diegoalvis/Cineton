@@ -1,7 +1,9 @@
-package com.diegoalvis.android.cintefon;
+package com.diegoalvis.android.cintefon.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.diegoalvis.android.cintefon.R;
 
 public class MainActivity extends AppCompatActivity {
 
