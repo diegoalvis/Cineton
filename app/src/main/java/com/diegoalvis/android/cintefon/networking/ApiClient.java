@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by diegoalvis on 1/23/17.
+ * Created by diegoalvis on 03/14/17.
  *
  * Singleton of Retrofit class
  * for connection to server online
@@ -16,8 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
+
     //URL service list of applications
-    public static final String BASE_URL = "https://itunes.apple.com";
+    public static final String BASE_URL = "https://api.themoviedb.org/3";
+
 
     // Config Timeout for connection
     public final static OkHttpClient okHttpClient = new OkHttpClient.Builder()
