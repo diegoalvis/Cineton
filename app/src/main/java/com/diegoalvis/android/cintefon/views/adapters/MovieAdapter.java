@@ -21,6 +21,8 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
+    static String base_image_path = "https://image.tmdb.org/t/p/w500";
+
     private final List<MovieItem> movies;
     private Context context;
 
@@ -47,7 +49,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         holder.overview.setText(movie.getOverview());
 
         try {
-            Picasso.with(context).load(movie.getPoster_path()).into(holder.image);
+            Picasso.with(context).load(base_image_path + movie.getPoster_path()).into(holder.image);
         } catch (Exception e) {
             Log.e("ALVIS", "Error to loading iamge");
         }

@@ -10,7 +10,6 @@ import com.diegoalvis.android.cintefon.networking.connection.ApiInterface;
 import com.diegoalvis.android.cintefon.networking.responses.MovieItemResponse;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -2,6 +2,7 @@ package com.diegoalvis.android.cintefon.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.diegoalvis.android.cintefon.R;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
         setContentView(R.layout.activity_main);
         getViews();
 
+        presenter = new MainPresenter();
         presenter.onCreate(this);
         presenter.getListMoviesFromService("popular");
     }
@@ -52,7 +54,10 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
 
     // region get views from layout
     public void getViews() {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView = (RecyclerView) findViewById(R.id.rv_list_movies);
+        recyclerView.setLayoutManager(llm);
     }
     // endregion
 }
