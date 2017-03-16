@@ -1,5 +1,7 @@
 package com.diegoalvis.android.cintefon.models;
 
+import java.util.ArrayList;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -15,7 +17,6 @@ public class MovieItem extends RealmObject{
     private boolean adult;
     private double  popularity;
     private int vote_count;
-    private int[] genre_ids;
     private String poster_path;
     private String overview;
     private String release_date;
@@ -58,14 +59,6 @@ public class MovieItem extends RealmObject{
 
     public void setVote_count(int vote_count) {
         this.vote_count = vote_count;
-    }
-
-    public int[] getGenre_ids() {
-        return genre_ids;
-    }
-
-    public void setGenre_ids(int[] genre_ids) {
-        this.genre_ids = genre_ids;
     }
 
     public String getPoster_path() {
