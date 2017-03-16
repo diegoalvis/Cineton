@@ -16,17 +16,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
+    // region URL of the movies API
+    public static final String BASE_URL = "https://api.themoviedb.org/3/";
+    // endregion
 
-    //URL service list of applications
-    public static final String BASE_URL = "https://api.themoviedb.org/3";
-
-
-    // Config Timeout for connection
+    // region Config Timeout for connection
     public final static OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .connectTimeout(5, TimeUnit.SECONDS)
             .readTimeout(5, TimeUnit.SECONDS)
             .build();
+    // endregion
 
+    // region Initiliaze Retrofit singleton
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient(){
@@ -38,5 +39,6 @@ public class ApiClient {
         }
         return retrofit;
     }
+    // endregion
 
 }

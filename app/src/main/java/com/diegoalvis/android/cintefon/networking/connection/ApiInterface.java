@@ -1,12 +1,11 @@
 package com.diegoalvis.android.cintefon.networking.connection;
 
-import com.google.gson.JsonObject;
-
-import java.util.List;
+import com.diegoalvis.android.cintefon.networking.responses.MovieItemResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Path;
 
 
 /**
@@ -18,20 +17,8 @@ import retrofit2.http.Headers;
 
 public interface ApiInterface {
 
-    String popular_path = "/movie/popular?api_key=e438287d6167b07734b6e68210e081ab&language=en-US&page=1";
-    String top_rated_path = "/movie/top_rated?api_key=e438287d6167b07734b6e68210e081ab&language=en-US&page=1";
-    String upcoming_path = "/movie/upcoming?api_key=e438287d6167b07734b6e68210e081ab&language=en-US&page=1";
-
     @Headers({"Content-Type: application/json"})
-    @GET(popular_path)
-    Call<JsonObject> getPopularMovies();
-
-    @Headers({"Content-Type: application/json"})
-    @GET(top_rated_path)
-    Call<JsonObject> getTopRatedMovies();
-
-    @Headers({"Content-Type: application/json"})
-    @GET(upcoming_path)
-    Call<JsonObject> getUpcomingMovies();
+    @GET("movie/{category}?api_key=e438287d6167b07734b6e68210e081ab&language=en-US&page=1")
+    Call<MovieItemResponse> getMovies(@Path("category") String category);
 
 }
