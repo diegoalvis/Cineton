@@ -34,12 +34,14 @@ public class MainPresenter implements MainPresenterInterface {
         makeRequest(category);
     }
 
-    @Override
+
+
+
+
     public void showList(List<MovieItem> movies) {
         viewInterface.createList(viewInterface.createMovieAdapter(movies));
         viewInterface.showList();
     }
-
 
     //region Get Movies Data
     private void makeRequest(String category) {
