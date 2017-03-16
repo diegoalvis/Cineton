@@ -1,6 +1,8 @@
-package com.diegoalvis.android.cintefon.networking;
+package com.diegoalvis.android.cintefon.networking.connection;
 
 import com.google.gson.JsonObject;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,4 +1,4 @@
-package com.diegoalvis.android.cintefon.networking;
+package com.diegoalvis.android.cintefon.networking.connection;
 
 import java.util.concurrent.TimeUnit;
 
