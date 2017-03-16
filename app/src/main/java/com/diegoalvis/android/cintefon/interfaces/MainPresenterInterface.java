@@ -1,15 +1,15 @@
 package com.diegoalvis.android.cintefon.interfaces;
 
 
+import com.diegoalvis.android.cintefon.models.MovieItem;
+
+import java.util.List;
 
 public interface MainPresenterInterface {
 
-    public void onCreate(IMainView view);
-
-    public void getImagesFromService();
-
-    public void showList();
-
-    public void onItemClicked(int position);
+    void onCreate(MainInterface viewInterface);  // reference to view
+    void getListMoviesFromService(String category);
+    void showList(List<MovieItem> movies);
+    //void onItemClicked(int position);
 
 }

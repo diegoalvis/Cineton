@@ -1,33 +1,22 @@
 package com.diegoalvis.android.cintefon.interfaces;
 
-import com.juanjo.mvp.models.ImageDto;
-import com.juanjo.mvp.views.adapters.ImageListAdapter;
+import com.diegoalvis.android.cintefon.models.MovieItem;
+import com.diegoalvis.android.cintefon.views.adapters.MovieAdapter;
 
 import java.util.List;
 
-/**
- * Created by juanjo on 14/2/15.
- */
+
 public interface MainInterface {
 
-    public void createList(ImageListAdapter adapter);
-
-    public ImageListAdapter createImageAdapter(List<ImageDto> images);
-
-    public void goToDetailActivity(ImageDto image);
-
-    public void showProgressBar();
-
-    public void hideProgressBar();
-
-    public void showRetryButton();
-
-    public void hideRetryButton();
-
-    public void showList();
-
-    public void hideList();
-
-    public void showMessage(String message);
+    void createList(MovieAdapter adapter);
+    MovieAdapter createMovieAdapter(List<MovieItem> movies);
+    void goToDetailActivity(int idMovie);
+    void showProgressBar();
+    void hideProgressBar();
+    void showRetryButton();
+    void hideRetryButton();
+    void showList();
+    void hideList();
+    void showMessage(String message);
 
 }
