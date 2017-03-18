@@ -6,6 +6,6 @@ package com.diegoalvis.android.cintefon.interfaces;
 
 public interface ResultManagerInterface {
 
-    void reload();
+    void actionSnack();
 
 }

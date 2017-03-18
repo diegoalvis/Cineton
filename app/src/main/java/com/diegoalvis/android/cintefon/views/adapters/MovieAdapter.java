@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.diegoalvis.android.cintefon.R;
+import com.diegoalvis.android.cintefon.interfaces.MainInterface;
 import com.diegoalvis.android.cintefon.models.MovieItem;
 import com.squareup.picasso.Picasso;
 
@@ -23,13 +24,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     static String base_image_path = "https://image.tmdb.org/t/p/w500";
 
-    private final List<MovieItem> movies;
+    private List<MovieItem> movies;
     private Context context;
 
+    MainInterface viewInterface;
 
-    public MovieAdapter(Context context, List<MovieItem> movies){
+
+    public MovieAdapter(Context context, List<MovieItem> movies, MainInterface viewInterface){
         this.movies = movies;
         this.context = context;
+        this.viewInterface = viewInterface;
     }
 
 
@@ -51,14 +55,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         try {
             Picasso.with(context).load(base_image_path + movie.getPoster_path()).into(holder.image);
         } catch (Exception e) {
-            Log.e("ALVIS", "Error to loading iamge");
+            Log.e("ALVIS", "Error to loading image");
         }
-
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //listener.onItemClickApp(movies.get(position), holder);
+                viewInterface.onMovieClick(movies.get(position));
             }
         });
 

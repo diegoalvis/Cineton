@@ -11,5 +11,6 @@ public interface MainInterface {
     void createList(MovieAdapter adapter);
     MovieAdapter createMovieAdapter(List<MovieItem> movies);
     void showList();
+    void onMovieClick(MovieItem movieItem);
 
 }

@@ -3,6 +3,7 @@ package com.diegoalvis.android.cintefon.models;
 import java.util.ArrayList;
 
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -13,6 +14,9 @@ public class MovieItem extends RealmObject{
 
     @PrimaryKey
     private int id;
+
+    @Index
+    private String category;
 
     private boolean adult;
     private double  popularity;
@@ -37,10 +41,18 @@ public class MovieItem extends RealmObject{
         this.id = id;
     }
 
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public boolean isAdult() {
         return adult;
     }
-
     public void setAdult(boolean adult) {
         this.adult = adult;
     }

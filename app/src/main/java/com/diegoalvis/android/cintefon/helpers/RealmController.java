@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import io.realm.Realm;
 
 /**
- * Created by Alejandro Alvis Alvis on 3/14/17
+ * Created by Alejandro Alvis on 3/14/17
  */
 public class RealmController {
 

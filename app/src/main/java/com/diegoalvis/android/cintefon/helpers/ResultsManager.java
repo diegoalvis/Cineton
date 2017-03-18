@@ -20,7 +20,7 @@ public class ResultsManager {
     RelativeLayout view;
     Context context;
     ProgressBar progressBar;
-    TextView txtMsj;
+    TextView txtmsg;
     Snackbar snackbar;
     //endregion
 
@@ -44,7 +44,7 @@ public class ResultsManager {
         this.view = view;
         this.resultManagerInterface = resultManagerInterface;
         progressBar = new ProgressBar(context);
-        txtMsj = new TextView(context);
+        txtmsg = new TextView(context);
         params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.addRule(RelativeLayout.CENTER_HORIZONTAL);
         params.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -53,35 +53,35 @@ public class ResultsManager {
     public void initLoad(){
         try{
             view.addView(progressBar,params);
-            view.addView(txtMsj,params);
+            view.addView(txtmsg,params);
         }catch (Exception e){
             Log.e("Alvis -- result manager","Error al añadir views desde ResultManager: "+e.toString());
         }
         dimissSnackBar();
         progressBar.setVisibility(View.VISIBLE);
-        txtMsj.setVisibility(View.GONE);
+        txtmsg.setVisibility(View.GONE);
     }
 
-    public void noItems(String msj){
+    public void noItems(String msg){
         try {
             progressBar.setVisibility(View.GONE);
-            txtMsj.setText(msj);
-            txtMsj.setVisibility(View.VISIBLE);
+            txtmsg.setText(msg);
+            txtmsg.setVisibility(View.VISIBLE);
             dimissSnackBar();
         }catch (Exception e){
             Log.e("Alvis -- result manager","Error en no items result manager: "+e.toString());
         }
     }
 
-    public void ErrorLoad(String msj, String snackMsj, String action){
+    public void errorLoad(String msg, String snackmsg, String action){
         try{
             progressBar.setVisibility(View.GONE);
-            txtMsj.setText(msj);
-            txtMsj.setVisibility(View.VISIBLE);
-            snackbar = Snackbar.make(view, snackMsj, Snackbar.LENGTH_INDEFINITE).setAction(action, new View.OnClickListener() {
+            txtmsg.setText(msg);
+            txtmsg.setVisibility(View.VISIBLE);
+            snackbar = Snackbar.make(view, snackmsg, Snackbar.LENGTH_LONG).setAction(action, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    resultManagerInterface.reload();
+                    resultManagerInterface.actionSnack();
                 }
             });
             snackbar.show();
@@ -93,7 +93,7 @@ public class ResultsManager {
 
     public void loadOk(){
         progressBar.setVisibility(View.GONE);
-        txtMsj.setText("");
+        txtmsg.setText("");
         dimissSnackBar();
     }
 
