@@ -10,5 +10,6 @@
     <dimen name="cardview_default_elevation">5dp</dimen>
     <dimen name="margin_title_category">5dp</dimen>
     <dimen name="margin_recycler_promo">5dp</dimen>
+    <dimen name="margin_items_detail">5dp</dimen>
 
 </resources>

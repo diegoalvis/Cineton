@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.diegoalvis.android.cintefon.views.MainActivity">
 
@@ -31,8 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 cardview:cardCornerRadius="8dp"
-                cardview:cardBackgroundColor="@color/red"
-                android:padding="5dp"
+                cardview:cardBackgroundColor="@color/colorAccent"
+                cardview:cardUseCompatPadding="true"
                 android:onClick="optionClickCategory"
                 cardview:cardElevation="@dimen/cardview_default_elevation" >
                 <TextView
@@ -59,8 +57,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 cardview:cardCornerRadius="8dp"
-                cardview:cardBackgroundColor="@color/red"
-                android:padding="5dp"
+                cardview:cardBackgroundColor="@color/colorAccent"
+                cardview:cardUseCompatPadding="true"
                 android:onClick="optionClickCategory"
                 cardview:cardElevation="@dimen/cardview_default_elevation" >
                 <TextView
@@ -86,8 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 cardview:cardCornerRadius="8dp"
-                cardview:cardBackgroundColor="@color/red"
-                android:padding="5dp"
+                cardview:cardBackgroundColor="@color/colorAccent"
+                cardview:cardUseCompatPadding="true"
                 android:onClick="optionClickCategory"
                 cardview:cardElevation="@dimen/cardview_default_elevation" >
                 <TextView
@@ -105,12 +103,17 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_list_movies"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_list_movies"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 

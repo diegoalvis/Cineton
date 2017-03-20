@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Cintefon</string>
+    <string name="app_name">Cinefon</string>
     <string name="category_popular">popular</string>
     <string name="category_upcoming">upcoming</string>
     <string name="category_top_rated">top_rated</string>
+    <string name="votes_label">Votes </string>
+    <string name="hint_search">Search</string>
+
 </resources>
