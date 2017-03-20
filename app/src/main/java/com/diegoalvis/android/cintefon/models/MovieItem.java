@@ -1,7 +1,11 @@
 package com.diegoalvis.android.cintefon.models;
 
-import java.util.ArrayList;
+import com.google.gson.JsonArray;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
@@ -136,4 +140,6 @@ public class MovieItem extends RealmObject{
     public void setVote_average(String vote_average) {
         this.vote_average = vote_average;
     }
+
+
 }
