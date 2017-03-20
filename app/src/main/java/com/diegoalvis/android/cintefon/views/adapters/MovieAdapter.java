@@ -14,6 +14,7 @@ import com.diegoalvis.android.cintefon.interfaces.MainInterface;
 import com.diegoalvis.android.cintefon.models.MovieItem;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,19 +23,20 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
-    static String base_image_path = "https://image.tmdb.org/t/p/w500";
+    public static String base_image_path = "https://image.tmdb.org/t/p/w500";
 
-    private List<MovieItem> movies;
+    private List<MovieItem> movies, movieHolderList;
     private Context context;
 
     MainInterface viewInterface;
 
-
     public MovieAdapter(Context context, List<MovieItem> movies, MainInterface viewInterface){
         this.movies = movies;
+        this.movieHolderList = movies;
         this.context = context;
         this.viewInterface = viewInterface;
     }
+
 
 
     @Override
@@ -71,6 +73,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return (movies == null) ? 0 : movies.size();
+    }
+
+
+    public void searchResults(String str) {
+        str = str.toLowerCase();
+        final List<MovieItem> filterMovies = new ArrayList<>();
+        for (MovieItem movie : movieHolderList) {
+            final String title = movie.getOriginal_title().toLowerCase();
+            if (title.contains(str)) {
+                filterMovies.add(movie);
+            }
+        }
+        this.movies = filterMovies;
+        notifyDataSetChanged();
     }
 
 

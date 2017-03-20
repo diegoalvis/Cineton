@@ -1,7 +1,11 @@
 package com.diegoalvis.android.cintefon.presenters;
 
 import android.content.Context;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -17,6 +21,7 @@ import com.diegoalvis.android.cintefon.networking.connection.ApiInterface;
 import com.diegoalvis.android.cintefon.networking.responses.MovieItemResponse;
 import com.diegoalvis.android.cintefon.views.MainActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
@@ -28,7 +33,7 @@ import retrofit2.Response;
  * Created by diegoalvis on 3/15/17.
  */
 
-public class MainPresenter implements MainPresenterInterface, ResultManagerInterface {
+public class MainPresenter implements MainPresenterInterface, ResultManagerInterface, SearchView.OnQueryTextListener {
 
     String category;
 
@@ -46,7 +51,7 @@ public class MainPresenter implements MainPresenterInterface, ResultManagerInter
 
     @Override
     public void getListMoviesFromService(String category) {
-        this.category = category;
+        this.category = (category != null) ? category :  this.category;
         if(ConnectionHelper.isInternetAvailable(context))
             makeRequest();
         else
@@ -57,8 +62,8 @@ public class MainPresenter implements MainPresenterInterface, ResultManagerInter
     public void showList(List<MovieItem> movies) {
         resultsManager.loadOk();
         viewInterface.createList(viewInterface.createMovieAdapter(movies));
-        viewInterface.showList();
     }
+
 
     @Override
     public String categorySelected(View view) {
@@ -87,6 +92,7 @@ public class MainPresenter implements MainPresenterInterface, ResultManagerInter
             public void onResponse(Call<MovieItemResponse> call, Response<MovieItemResponse> response) {
                 if(response.body().getResults().size() == 0) {
                     resultsManager.noItems("No movies");
+
                 } else {
                     showList(response.body().getResults());
                     storeData(response.body().getResults());
@@ -120,18 +126,39 @@ public class MainPresenter implements MainPresenterInterface, ResultManagerInter
         Realm realm = Realm.getDefaultInstance();
         List<MovieItem> results = realm.where(MovieItem.class).equalTo("category", category).findAll();
         if (results.size() == 0)
-            resultsManager.noItems("No movies");
+            resultsManager.errorLoad("", "No internet access", "RETRY");
         else
             showList(results);
     }
     // endregion
 
 
-
     @Override
     public void actionSnack() {
         makeRequest();
     }
+
+    // region search view
+    @Override
+    public boolean setMenu(Menu menu) {
+        final MenuItem item = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setQueryHint(context.getResources().getString(R.string.hint_search));
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        viewInterface.searchMovies(newText);
+        return false;
+    }
+    // endregion
 
 
 }
